@@ -1,3 +1,114 @@
+import time
+
+# Function for displaying the main interface
+def display_interface():
+    print("\nVyom\n")
+    print("OWNER: Vyom\n")
+    print("[1] EXTRACT ACCOUNT")
+    print("[2] SHARE POST")
+    print("[3] REACT TO POST")
+    print("[4] FOLLOW USER")
+    print("[5] COMMENT ON POST")
+    print("[6] EXIT")
+
+# Function to extract account details
+def extract_account():
+    print("\nExtracting accounts...")
+    accounts = []
+    
+    # Read credentials from a file
+    try:
+        with open("accounts.txt", "r") as file:
+            for line in file:
+                line = line.strip()
+                if "|" in line:
+                    uid, password = line.split("|")
+                    accounts.append((uid, password))
+        
+        print("\nAccounts extracted successfully:")
+        for account in accounts:
+            print(f"UID: {account[0]}, Password: {account[1]}")
+    except FileNotFoundError:
+        print("Error: accounts.txt file not found.")
+
+# Function to simulate sharing a post
+def share_post():
+    print("\nSharing the post...")
+    time.sleep(2)  # Simulating delay for the process
+    print("Post shared successfully.")
+
+# Function to simulate reacting to a post
+def react_post():
+    print("\nReacting to the post...")
+    print("Choose a reaction:")
+    print("[1] Like")
+    print("[2] Heart")
+    print("[3] Wow")
+    print("[4] Angry")
+    print("[5] Sad")
+    
+    reaction_choice = input("Enter your reaction choice (1/2/3/4/5): ")
+    
+    if reaction_choice == '1':
+        print("Reacted with: Like")
+    elif reaction_choice == '2':
+        print("Reacted with: Heart")
+    elif reaction_choice == '3':
+        print("Reacted with: Wow")
+    elif reaction_choice == '4':
+        print("Reacted with: Angry")
+    elif reaction_choice == '5':
+        print("Reacted with: Sad")
+    else:
+        print("Invalid reaction choice.")
+    
+    time.sleep(2)  # Simulating delay for the process
+    print("Reaction successful.")
+
+# Function to simulate following a user
+def follow_user():
+    print("\nFollowing the user...")
+    time.sleep(2)  # Simulating delay for the process
+    print("Followed the user successfully.")
+
+# Function to simulate commenting on a post
+def comment_post():
+    print("\nCommenting on the post...")
+    custom_comment = input("Enter your custom comment: ")
+    time.sleep(2)  # Simulating delay for the process
+    print(f"Comment posted successfully: {custom_comment}")
+
+# Function to handle menu choice
+def handle_choice(choice):
+    if choice == '1':
+        extract_account()
+    elif choice == '2':
+        share_post()
+    elif choice == '3':
+        react_post()
+    elif choice == '4':
+        follow_user()
+    elif choice == '5':
+        comment_post()
+    elif choice == '6':
+        print("\nExiting the tool...")
+        exit()
+    else:
+        print("Invalid choice. Please try again.")
+
+# Main menu function
+def main_menu():
+    while True:
+        display_interface()
+        choice = input("Enter your choice (1/2/3/4/5/6): ")
+        handle_choice(choice)
+
+# Start the program
+if __name__ == "__main__":
+    main_menu()
+
+
+
 MIT License
 
 Copyright (c) 2024 hakdogkotobakitba
